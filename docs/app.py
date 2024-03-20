@@ -9,7 +9,7 @@ def index():
 @app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':
-        text = request.form['textbox']
+        text = request.form.get('textbox', '')  # 使用 get 方法获取字段值，如果字段不存在，则返回空字符串
         print(text)
         return 'Received: ' + text
 
