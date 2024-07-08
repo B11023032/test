@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股票技術分析建議</title>
+</head>
+<body>
+    <h1>股票技術分析建議</h1>
+    <label for="symbolInput">輸入公司代號:</label>
+    <input type="text" id="symbolInput" placeholder="例如：TPEX:6461">
+    <button onclick="updateChart()">顯示圖表</button>
+    
+    <div class="tradingview-widget-container">
+        <div id="tradingview-widget"></div>
+    </div>
+
+    <script type="text/javascript">
+        function updateChart() {
+            var symbol = document.getElementById('symbolInput').value;
+            if (symbol) {
+                var widgetContainer = document.getElementById('tradingview-widget');
+                widgetContainer.innerHTML = '';
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js';
+                script.async = true;
+                script.innerHTML = JSON.stringify({
+                    "interval": "1D",
+                    "width": 425,
+                    "isTransparent": false,
+                    "height": 450,
+                    "symbol": symbol,
+                    "showIntervalTabs": true,
+                    "displayMode": "single",
+                    "locale": "zh_TW",
+                    "colorTheme": "light"
+                });
+                widgetContainer.appendChild(script);
+            } else {
+                alert('請輸入公司代號');
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+  {
+  "width": "100%",
+  "height": 550,
+  "defaultColumn": "overview",
+  "defaultScreen": "most_capitalized",
+  "market": "taiwan",
+  "showToolbar": true,
+  "colorTheme": "light",
+  "locale": "zh_TW"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+
+
+
+
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
+  {
+  "isTransparent": false,
+  "largeChartUrl": "",
+  "displayMode": "regular",
+  "width": 400,
+  "height": 550,
+  "colorTheme": "light",
+  "symbol": "TWSE:2603",
+  "locale": "zh_TW"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+  {
+  "width": "100%",
+  "height": 550,
+  "symbol": "TPEX:6895",
+  "interval": "D",
+  "timezone": "Asia/Taipei",
+  "theme": "light",
+  "style": "1",
+  "locale": "zh_TW",
+  "allow_symbol_change": true,
+  "calendar": false,
+  "support_host": "https://www.tradingview.com"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+  {
+  "symbol": "TWSE:2317",
+  "width": 550,
+  "locale": "zh_TW",
+  "colorTheme": "light",
+  "isTransparent": false
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+
